@@ -1,7 +1,7 @@
 - 👋 Hi, I’m @Aikun7777777,  and my  WeChat ID is Aikun7777777
 - 👀 I’m interested in AI and BlockChain
-- 🌱 I’m currently learning Move and AIGC
-- 💞️ I’m looking to collaborate on ...
+- 🌱 I’m currently learning AGI
+- 💞️ I’m looking to collaborate on ChatGPT product
 - 📫 How to reach me ...zk47@foxmail.com
 
 <!---
