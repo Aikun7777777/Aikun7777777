@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>99乘法表</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            max-width: 900px;
+            width: 100%;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .multiplication-table {
+            display: grid;
+            grid-template-columns: repeat(9, 1fr);
+            gap: 15px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .equation {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            font-size: 14px;
+            font-weight: bold;
+            color: #333;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border: 2px solid transparent;
+        }
+
+        .equation:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            border-color: #667eea;
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+        }
+
+        .equation:nth-child(odd) {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+        }
+
+        .equation:nth-child(odd):hover {
+            background: linear-gradient(135deg, #d299c2 0%, #fef9d7 100%);
+        }
+
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+        }
+
+        @media (max-width: 768px) {
+            .multiplication-table {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 10px;
+            }
+            
+            .equation {
+                padding: 12px;
+                font-size: 12px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .multiplication-table {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .animation-container {
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container animation-container">
+        <h1>✨ 99乘法表 ✨</h1>
+        <div class="multiplication-table" id="multiplicationTable">
+        </div>
+        <div class="footer">
+            <p>鼠标悬停在卡片上看看效果吧！</p>
+        </div>
+    </div>
+
+    <script>
+        function generateMultiplicationTable() {
+            const tableContainer = document.getElementById('multiplicationTable');
+            
+            for (let i = 1; i <= 9; i++) {
+                for (let j = 1; j <= i; j++) {
+                    const equation = document.createElement('div');
+                    equation.className = 'equation';
+                    equation.innerHTML = `${j} × ${i} = ${j * i}`;
+                    
+                    // 添加延迟动画效果
+                    equation.style.animationDelay = `${(i - 1) * 9 + j - 1} * 0.05s`;
+                    
+                    tableContainer.appendChild(equation);
+                }
+            }
+        }
+
+        // 页面加载完成后生成乘法表
+        document.addEventListener('DOMContentLoaded', function() {
+            generateMultiplicationTable();
+        });
+
+        // 添加一些交互效果
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('equation')) {
+                e.target.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    e.target.style.transform = '';
+                }, 150);
+            }
+        });
+    </script>
+</body>
+</html>
