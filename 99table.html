@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>99乘法表</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f8f8f8;
+            padding: 40px;
+        }
+        table {
+            border-collapse: collapse;
+            margin: 0 auto;
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px 12px;
+            text-align: center;
+            font-size: 16px;
+        }
+        th {
+            background: #f0f0f0;
+        }
+        caption {
+            margin-bottom: 16px;
+            font-size: 22px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <caption>99乘法表</caption>
+        <tbody id="table-body">
+        </tbody>
+    </table>
+    <script>
+        const tbody = document.getElementById('table-body');
+        for(let i = 1; i <= 9; i++) {
+            const tr = document.createElement('tr');
+            for(let j = 1; j <= i; j++) {
+                const td = document.createElement('td');
+                td.textContent = `${j} × ${i} = ${i*j}`;
+                tr.appendChild(td);
+            }
+            tbody.appendChild(tr);
+        }
+    </script>
+</body>
+</html>
